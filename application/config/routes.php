@@ -37,9 +37,11 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-$route['default_controller'] = "users/users";
-$route['404_override'] = '';
+$route['default_controller'] = "users";
+$route['users/registration'] = "users/registration";
+$route['student'] = "student/index";
+$route['users/registrationcont'] = "users/registrationcont";
+$route['404_override'] = "errors/page_missing";
 
 
 /* End of file routes.php */

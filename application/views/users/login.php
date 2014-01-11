@@ -2,16 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!--
-		Charisma v1.0.0
 
-		Copyright 2012 Muhammad Usman
-		Licensed under the Apache License v2.0
-		http://www.apache.org/licenses/LICENSE-2.0
-
-		http://usman.it
-		http://twitter.com/halalit_usman
-	-->
 	<meta charset="utf-8">
 	<title>Welcome to PhD automated system</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +61,7 @@
 					<div class="alert alert-info">
 						Please login with your Username and Password.
 					</div>
-					<form class="form-horizontal" action="index.html" method="post">
+					<?php echo form_open("index.php/users/logincont"); ?>
 						<fieldset>
 							<div class="input-prepend" title="Username" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" />
@@ -90,8 +81,18 @@
 							<p class="center span5">
 							<button type="submit" class="btn btn-primary">Login</button>
 							</p>
+							
+
+							<div class="center span5">
+							or
+							</div>
+							
+							<p class="center span5">
+							<a href='index.php/users/registration'><button type="button" class="btn btn-primary">Register</button></a>
+							</p>
+							
 						</fieldset>
-					</form>
+					<?php echo form_close(); ?>
 				</div><!--/span-->
 			</div><!--/row-->
 				</div><!--/fluid-row-->
