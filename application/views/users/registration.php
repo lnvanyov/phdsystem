@@ -123,7 +123,7 @@
 							  <div class="control-group">
 								<label class="control-label" for="password">Password</label>
 								<div class="controls">
-								  <input class="input-xlarge focused" id="focusedInput" type="text" placeholder="Password" name="password" >
+								  <input class="input-xlarge focused" id="focusedInput" type="password" placeholder="Password" name="password" >
 								</div>
 							  </div>
 							

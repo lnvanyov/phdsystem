@@ -33,7 +33,7 @@ class Users_model extends CI_Model {
 		'users_lastname'=>$this->input->post('lastname'),
 		'users_specialty'=>$this->input->post('specialty'),
 		'users_role'=>$this->input->post('role'),
-		'users_email'=>$this->input->post('firstname'),
+		'users_email'=>$this->input->post('email_address'),
 		'users_username'=>$this->input->post('username'),
 		'users_password'=>md5($this->input->post('password')),
     );

@@ -54,8 +54,8 @@ class Users extends CI_Controller {
     }
     
     public function thank() {
- 
-        $this->load->view("users/thank");
+        $data['url'] = base_url();
+        $this->load->view("users/thank", $data);
     }
 
     public function registrationcont() {
@@ -63,7 +63,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('firstname', 'First name', 'trim|required|min_length[4]|xss_clean');
         $this->form_validation->set_rules('lastname', 'Last name', 'trim|required');
         $this->form_validation->set_rules('specialty', 'Specialty', 'trim|required|min_length[4]');
-        $this->form_validation->set_rules('email_address', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('email_address', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]');
 
