@@ -11,8 +11,10 @@ class Users extends CI_Controller {
     }
 
     public function index() {
+        $data = array();
+        $data['url'] = base_url();
         if (($this->session->userdata('users_username') == "")) {
-			$this->load->view('users/login');
+			$this->load->view('users/login', $data);
         } else {
 			$this->load->view('users/logincont');
         }
