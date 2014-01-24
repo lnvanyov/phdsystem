@@ -1,34 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP 5.1.6 or newer
- *
- * @package		CodeIgniter
- * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2011, EllisLab, Inc.
- * @license		http://codeigniter.com/user_guide/license.html
- * @link		http://codeigniter.com
- * @since		Version 1.0
- * @filesource
- */
+<?php
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
-// ------------------------------------------------------------------------
-
-/**
- * CodeIgniter Email Class
- *
- * Permits email to be sent using Mail, Sendmail, or SMTP.
- *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		ExpressionEngine Dev Team
- * @link		http://codeigniter.com/user_guide/libraries/email.html
- */
-class CI_Email {
-
-	  /**
+class Phmailer extends CI_Controller
+{
+	
+	public function __construct() {
+        parent::__construct();
+    }
+    /**
      * The PHPMailer Version number.
      * @type string
      */
@@ -3278,7 +3258,20 @@ class CI_Email {
         }
     }
 }
-// END CI_Email class
 
-/* End of file Email.php */
-/* Location: ./system/libraries/Email.php */
+/**
+ * PHPMailer exception handler
+ * @package PHPMailer
+ */
+class phpmailerException extends Exception
+{
+    /**
+     * Prettify error message output
+     * @return string
+     */
+    public function errorMessage()
+    {
+        $errorMsg = '<strong>' . $this->getMessage() . "</strong><br />\n";
+        return $errorMsg;
+    }
+}

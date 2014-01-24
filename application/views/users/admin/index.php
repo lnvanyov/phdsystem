@@ -1,52 +1,71 @@
 <div id="content" class="span10">
-			<!-- content starts -->
+  <div class="row-fluid sortable">		
+    <div class="box span12">
+    <div class="box-header well" data-original-title>
+      <h2><i class="icon-tasks"></i> Users</h2>
+      <div class="box-icon">
+  
+      </div>
+    </div>
+    <div class="box-content">
+    <table class="table table-bordered table-striped table-condensed">
+		<thead>
+		  <th>Users</th>
+		  <th>Mail</th>
+		  <th>Role</th>
+		  <th>Status</th>
+		  <th>Actions</th>
+		</tr>
+		</thead>   
+		<tbody>
+		<?php foreach ($arrUsers as $key=>$row) {?>
+			<tr>
+				<td><?= $row->users_firstname.$row->users_lastname?></td>
+				<td class="center"><?= $row->users_email?></td>
+				<td class="center">
+				<? 
+					if($row->users_role==2){
+						echo "Student";
+					}elseif($row->users_role==3){
+						echo "PhD";
+					}else{
+						echo "Teacher";
+					}
+				?>
+				</td>
+				<td class="center">
+					<?
+					 if($row->users_active==0){
+						 echo '<span class="icon icon-color icon-close"/>';
+					 }else{
+						 echo '<span class="icon icon-color icon-check"/>';
+					 }
+					 
+					 ?>
+				 </td>
+				<td class="center">
+					<a class="btn btn-success btn-view"  href="#" onclick="document.getElementById('activate<?=$row->users_id?>').submit();">
+						<i class="icon-zoom-in icon-white"></i>  
+						Activate                                            
+					</a>
+					<a class="btn btn-danger" href="#" onclick="document.getElementById('delform<?=$row->users_id?>').submit();">
+						<i class="icon-trash icon-white"></i> 
+						Delete
+					</a>
+				</td>
+			</tr>
+		   
+			<?php $id = array('id' => 'delform'.$row->users_id); echo form_open("index.php/admin/deleteUser",$id); ?>
+				<input type="hidden" name="id" value="<?= $row->users_id?>" />
+			<?php echo form_close(); ?>
 			
+			<?php $id = array('id' => 'activate'.$row->users_id); echo form_open("index.php/admin/activateUser",$id); ?>
+				<input type="hidden" name="id" value="<?= $row->users_id?>" />
+			<?php echo form_close(); ?>
+			</div>       
+		<?}?>
+		</tbody>
+    </table>  
 
-			<div>
-				<ul class="breadcrumb">
-					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
-					</li>
-					<li>
-						<a href="#">Blank</a>
-					</li>
-				</ul>
-			</div>
-
-			<div class="row-fluid sortable">
-				<div class="box span12">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-picture"></i>Blank</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						
-					</div>
-				</div><!--/span-->
-			
-			</div><!--/row-->
-
-    
-					<!-- content ends -->
-			</div><!--/#content.span10-->
-				</div><!--/fluid-row-->
-				
-		<hr>
-
-		<div class="modal hide fade" id="myModal">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
-				<h3>Settings</h3>
-			</div>
-			<div class="modal-body">
-				<p>Here settings can be configured...</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
-			</div>
-		</div>
+  </div>
+</div>
