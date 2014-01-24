@@ -22,12 +22,7 @@
 				</div>
 			</div>
 			<div class="box-content">
-				<?php if ($this->session->flashdata('success')): ?>
-					<p style="color:green">
-						<?php echo $this->session->flashdata('success'); ?>
-					</p>
-				<?php endif ?>
-				<?php echo form_open("index.php/teacher/createassigment", array('class' => 'form-horizontal')); ?>
+				<?php echo form_open("index.php/student/createassigment", array('class' => 'form-horizontal')); ?>
 					<?php echo validation_errors('<p class="error" style="color:red;">'); ?>
 					<fieldset>
 						<div class="control-group">
@@ -39,7 +34,7 @@
 						<div class="control-group">
 							<label class="control-label" for="textarea2">Assigment description</label>
 							<div class="controls">
-								<textarea class="cleditor" name="description" id="textarea2" rows="3"></textarea>
+								<textarea class="cleditor" id="textarea2" rows="3"></textarea>
 							</div>
 						</div>
 						<div class="control-group">
