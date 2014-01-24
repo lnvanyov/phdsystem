@@ -77,4 +77,33 @@ class Teacher extends CI_Controller {
         $this->session->set_flashdata('success', 'The assigment was deleted succesfully');
         redirect('index.php/teacher/assigments', 'refresh');
 	}
+
+	public function editassigment()
+	{
+		$id = $this->uri->segment(3);
+		$data = array();
+		$data['url'] = base_url();
+
+		$content = array();
+		$this->load->helper('url');
+		$content['assigment'] = $this->assigments_model->get_assigment($id);
+
+		$content['breadcrumbs'] = array(
+			'Home' => site_url('index.php/teacher'),
+			'Assigments' => site_url('index.php/teacher/assigments'),
+			'Edit assigment' => false
+		);
+
+		$this->load->view("users/teacher/header",$data);
+		$this->load->view("users/teacher/edit-assigment", $content);
+		$this->load->view("users/teacher/footer",$data); 
+	}
+
+	public function updateassigment()
+	{
+		if ($this->assigments_model->update_assigment()) {
+			$this->session->set_flashdata('success', 'The assigment was updated succesfully');
+	        redirect('index.php/teacher/assigments', 'refresh');
+		}
+	}
 }

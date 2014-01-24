@@ -23,6 +23,29 @@ class Assigments_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_assigment($id)
+    {
+        $this->db->select('*');
+        $this->db->where('id', $id);
+        $query = $this->db->get('assigments');
+        foreach ($query->result() as $row) {
+            return $row;
+        }
+    }
+
+    public function update_assigment()
+    {
+        $data = array(
+            'title'=>$this->input->post('title'),
+            'description'=>$this->input->post('description'),
+            'status'=>$this->input->post('status'),
+        );
+        $id = $this->input->post('id');
+        $this->db->where('id', $id);
+        $this->db->update('assigments', $data);
+        return true;
+    }
+
     public function delete_assigment($id)
     {
         $this->db->delete('assigments', array('id' => $id));
